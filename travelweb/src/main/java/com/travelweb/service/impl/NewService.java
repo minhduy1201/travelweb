@@ -1,8 +1,12 @@
 package com.travelweb.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.SecondaryTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.travelweb.converter.NewConverter;
@@ -47,6 +51,24 @@ public class NewService implements INewService {
 		}
 		
 	}
+
+	@Override
+	public List<NewDTO> findAll(Pageable pageable) {
+		List<NewDTO> result = new ArrayList<>();
+		List<NewsEntity> entities = newRepository.findAll(pageable).getContent();
+		for (NewsEntity item : entities) {
+			NewDTO newDTO = newConverter.toDTO(item);
+			result.add(newDTO);
+		}
+		return result;
+	}
+
+	@Override
+	public int totalItem() {
+		return (int) newRepository.count();
+	}
+	
+	
 
 //	@Override
 //	public NewDTO update(NewDTO newDTO) {

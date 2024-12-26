@@ -6,44 +6,37 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.travelweb.enumEntity.ERole;
+
+import lombok.Data;
 
 @Entity
 @Table(name = "role")
 public class RoleEntity extends BaseEntity {
-	@Column
-	private String code;
-	@Column
-	private String name;
-	
-	  @ManyToMany(mappedBy = "roles")
-	    private List<UserEntity> users = new ArrayList<>();
+	@Enumerated(EnumType.STRING)
+	@Column(length = 20)
+	private ERole name;
 
-	public String getName() {
-		return name;
+	public RoleEntity() {
+
 	}
 
-	public void setName(String name) {
+	public RoleEntity(ERole name) {
 		this.name = name;
 	}
 
-	public String getCode() {
-		return code;
+	public ERole getName() {
+		return name;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public List<UserEntity> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<UserEntity> users) {
-		this.users = users;
+	public void setName(ERole name) {
+		this.name = name;
 	}
 	
 	
-
 }
