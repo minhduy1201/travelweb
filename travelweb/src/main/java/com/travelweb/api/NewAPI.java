@@ -20,7 +20,7 @@ import com.travelweb.service.INewService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/news")
+@RequestMapping("/api")
 public class NewAPI {
 	@Autowired
 	private INewService newService;

@@ -1,0 +1,204 @@
+Folder PATH listing
+Volume serial number is 9EE7-06DC
+C:.
+³   .classpath
+³   .gitignore
+³   .project
+³   pom.xml
+³   structure.txt
+³   
+ÃÄÄÄ.settings
+³       org.eclipse.core.resources.prefs
+³       org.eclipse.jdt.apt.core.prefs
+³       org.eclipse.jdt.core.prefs
+³       org.eclipse.m2e.core.prefs
+³       
+ÃÄÄÄ.vscode
+³       settings.json
+³       
+ÃÄÄÄsrc
+³   ÃÄÄÄmain
+³   ³   ÃÄÄÄjava
+³   ³   ³   ÀÄÄÄcom
+³   ³   ³       ÀÄÄÄtravelweb
+³   ³   ³           ³   Application.java
+³   ³   ³           ³   
+³   ³   ³           ÃÄÄÄapi
+³   ³   ³           ³   ³   AuthController.java
+³   ³   ³           ³   ³   NewAPI.java
+³   ³   ³           ³   ³   TestController.java
+³   ³   ³           ³   ³   UserAPI.java
+³   ³   ³           ³   ³   
+³   ³   ³           ³   ÃÄÄÄinput
+³   ³   ³           ³   ³       NewInput.java
+³   ³   ³           ³   ³       
+³   ³   ³           ³   ÀÄÄÄoutput
+³   ³   ³           ³           NewOutput.java
+³   ³   ³           ³           
+³   ³   ³           ÃÄÄÄconfig
+³   ³   ³           ³       JpaAuditingConfig.java
+³   ³   ³           ³       WebSecurityConfig.java
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄconverter
+³   ³   ³           ³       NewConverter.java
+³   ³   ³           ³       UserConverter.java
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄdetails
+³   ³   ³           ³       CustomOAuth2User.java
+³   ³   ³           ³       UserDetailsImpl.java
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄdto
+³   ³   ³           ³       AbstractDTO.java
+³   ³   ³           ³       NewDTO.java
+³   ³   ³           ³       UserDTO.java
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄentity
+³   ³   ³           ³       BaseEntity.java
+³   ³   ³           ³       CategoryEntity.java
+³   ³   ³           ³       NewsEntity.java
+³   ³   ³           ³       RoleEntity.java
+³   ³   ³           ³       UserEntity.java
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄenumEntity
+³   ³   ³           ³       ERole.java
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄfilter
+³   ³   ³           ³       AuthTokenFilter.java
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄjwt
+³   ³   ³           ³       AuthEntryPointJwt.java
+³   ³   ³           ³       JwtUtils.java
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄpayload
+³   ³   ³           ³   ÃÄÄÄrequest
+³   ³   ³           ³   ³       LoginRequest.java
+³   ³   ³           ³   ³       SignupRequest.java
+³   ³   ³           ³   ³       
+³   ³   ³           ³   ÀÄÄÄresponse
+³   ³   ³           ³           JwtResponse.java
+³   ³   ³           ³           MessageResponse.java
+³   ³   ³           ³           
+³   ³   ³           ÃÄÄÄrepository
+³   ³   ³           ³       CategoryRepository.java
+³   ³   ³           ³       NewRepository.java
+³   ³   ³           ³       RoleRepository.java
+³   ³   ³           ³       UserRepository.java
+³   ³   ³           ³       
+³   ³   ³           ÀÄÄÄservice
+³   ³   ³               ³   INewService.java
+³   ³   ³               ³   IUserService.java
+³   ³   ³               ³   UserDetailsService.java
+³   ³   ³               ³   
+³   ³   ³               ÀÄÄÄimpl
+³   ³   ³                       CustomOAuth2UserService.java
+³   ³   ³                       NewService.java
+³   ³   ³                       UserDetailsServiceImpl.java
+³   ³   ³                       
+³   ³   ÀÄÄÄresources
+³   ³           application.properties
+³   ³           
+³   ÀÄÄÄtest
+³       ÃÄÄÄjava
+³       ÀÄÄÄresources
+ÀÄÄÄtarget
+    ³   travelweb-1.0.jar
+    ³   
+    ÃÄÄÄclasses
+    ³   ³   application.properties
+    ³   ³   
+    ³   ÃÄÄÄcom
+    ³   ³   ÀÄÄÄtravelweb
+    ³   ³       ³   Application.class
+    ³   ³       ³   
+    ³   ³       ÃÄÄÄapi
+    ³   ³       ³   ³   AuthController.class
+    ³   ³       ³   ³   NewAPI.class
+    ³   ³       ³   ³   TestController.class
+    ³   ³       ³   ³   
+    ³   ³       ³   ÃÄÄÄinput
+    ³   ³       ³   ³       NewInput.class
+    ³   ³       ³   ³       
+    ³   ³       ³   ÀÄÄÄoutput
+    ³   ³       ³           NewOutput.class
+    ³   ³       ³           
+    ³   ³       ÃÄÄÄconfig
+    ³   ³       ³       WebSecurityConfig.class
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄconverter
+    ³   ³       ³       NewConverter.class
+    ³   ³       ³       UserConverter.class
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄdetails
+    ³   ³       ³       CustomOAuth2User.class
+    ³   ³       ³       UserDetailsImpl.class
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄdto
+    ³   ³       ³       AbstractDTO.class
+    ³   ³       ³       NewDTO.class
+    ³   ³       ³       UserDTO.class
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄentity
+    ³   ³       ³       BaseEntity.class
+    ³   ³       ³       CategoryEntity.class
+    ³   ³       ³       NewsEntity.class
+    ³   ³       ³       RoleEntity.class
+    ³   ³       ³       UserEntity.class
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄenumEntity
+    ³   ³       ³       ERole.class
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄfilter
+    ³   ³       ³       AuthTokenFilter.class
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄjwt
+    ³   ³       ³       AuthEntryPointJwt.class
+    ³   ³       ³       JwtUtils.class
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄpayload
+    ³   ³       ³   ÃÄÄÄrequest
+    ³   ³       ³   ³       LoginRequest.class
+    ³   ³       ³   ³       SignupRequest.class
+    ³   ³       ³   ³       
+    ³   ³       ³   ÀÄÄÄresponse
+    ³   ³       ³           JwtResponse.class
+    ³   ³       ³           MessageResponse.class
+    ³   ³       ³           
+    ³   ³       ÃÄÄÄrepository
+    ³   ³       ³       CategoryRepository.class
+    ³   ³       ³       NewRepository.class
+    ³   ³       ³       RoleRepository.class
+    ³   ³       ³       UserRepository.class
+    ³   ³       ³       
+    ³   ³       ÀÄÄÄservice
+    ³   ³           ³   INewService.class
+    ³   ³           ³   IUserService.class
+    ³   ³           ³   UserDetailsService.class
+    ³   ³           ³   
+    ³   ³           ÀÄÄÄimpl
+    ³   ³                   CustomOAuth2UserService.class
+    ³   ³                   NewService.class
+    ³   ³                   UserDetailsServiceImpl.class
+    ³   ³                   
+    ³   ÀÄÄÄMETA-INF
+    ³       ³   MANIFEST.MF
+    ³       ³   
+    ³       ÀÄÄÄmaven
+    ³           ÀÄÄÄcom.travelweb
+    ³               ÀÄÄÄtravelweb
+    ³                       pom.properties
+    ³                       pom.xml
+    ³                       
+    ÃÄÄÄmaven-archiver
+    ³       pom.properties
+    ³       
+    ÃÄÄÄmaven-status
+    ³   ÀÄÄÄmaven-compiler-plugin
+    ³       ÃÄÄÄcompile
+    ³       ³   ÀÄÄÄdefault-compile
+    ³       ³           inputFiles.lst
+    ³       ³           
+    ³       ÀÄÄÄtestCompile
+    ³           ÀÄÄÄdefault-testCompile
+    ³                   inputFiles.lst
+    ³                   
+    ÀÄÄÄtest-classes

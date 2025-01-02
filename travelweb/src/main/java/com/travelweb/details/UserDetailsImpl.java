@@ -3,12 +3,15 @@ package com.travelweb.details;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelweb.entity.UserEntity;
@@ -16,7 +19,7 @@ import com.travelweb.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public class UserDetailsImpl implements UserDetails {
+public class UserDetailsImpl implements UserDetails{
 	@Serial
 	private static final long serialVersionUID = 1L;
 
@@ -30,6 +33,8 @@ public class UserDetailsImpl implements UserDetails {
 	private String password;
 
 	private Collection<? extends GrantedAuthority> authorities;
+	
+	private Map<String, Object> attributes;
 
 //    private boolean enabled;
 

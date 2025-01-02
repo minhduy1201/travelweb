@@ -13,11 +13,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.travelweb.filter.AuthTokenFilter;
 import com.travelweb.jwt.AuthEntryPointJwt;
+import com.travelweb.service.impl.CustomOAuth2UserService;
 import com.travelweb.service.impl.UserDetailsServiceImpl;
 
 @Configuration
@@ -28,7 +32,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	UserDetailsServiceImpl userDetailsService;
 	@Autowired
 	private AuthEntryPointJwt unauthorizedHandler;
-
+	@Autowired
+	private CustomOAuth2UserService customOAuth2UserService;
+	
 	@Bean
 	public AuthTokenFilter authenticationJwtTokenFilter() {
 		return new AuthTokenFilter();
@@ -75,11 +81,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
             .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-            .antMatchers("/api/news/**").permitAll()
-            .anyRequest().authenticated();
+            .authorizeRequests().antMatchers("/api/**", "/oauth2/**").permitAll()
+            .antMatchers("/api/**").permitAll()
+            .anyRequest().authenticated()
+            .and()
+            .oauth2Login()
+            .loginPage("/login") // Đường dẫn đăng nhập
+            .userInfoEndpoint().userService(customOAuth2UserService);
         
-        http.authenticationProvider(authenticationProvider());
+        http.authenticationProvider(authenticationProvider());        
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        
+        
     }
 }
