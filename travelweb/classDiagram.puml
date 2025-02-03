@@ -1,0 +1,286 @@
+
+@startuml
+
+!define SpringBootController stereotype <<Controller>>
+!define SpringBootEntity stereotype <<Entity>>
+!define SpringBootService stereotype <<Service>>
+!define SpringBootConfiguration stereotype <<Configuration>>
+
+package "com.travelweb.api" {
+    class AuthController <<SpringBootController>> {
+        + authenticateUser(loginRequest: LoginRequest): ResponseEntity
+        + registerUser(signUpRequest: SignupRequest): ResponseEntity
+        + handleGoogleLogin(authentication: OAuth2AuthenticationToken): ResponseEntity
+    }
+
+    class NewAPI <<SpringBootController>> {
+        + showNew(page: int, limit: int): NewOutput
+        + getAllCategories(): List<CategoryEntity>
+        + createNew(data: String, file: MultipartFile): NewDTO
+        + searchNewsByTitle(keyword: String): ResponseEntity
+        + updateNew(model: NewDTO, id: long): NewDTO
+        + deleteNew(ids: long[]): void
+    }
+}
+
+package "com.travelweb.api.output" {
+    class NewOutput {
+        - page: int
+        - totalPage: int
+        - listResult: List<NewDTO>
+        + getPage(): int
+        + setPage(page: int): void
+        + getTotalPage(): int
+        + setTotalPage(totalPage: int): void
+        + getListResult(): List<NewDTO>
+        + setListResult(listResult: List<NewDTO>): void
+    }
+}
+
+package "com.travelweb.config" {
+    class CloudinaryConfig <<SpringBootConfiguration>> {
+        + cloudinary(): Cloudinary
+    }
+
+    class JpaAuditingConfig <<SpringBootConfiguration>> {
+        + auditorProvider(): AuditorAware<String>
+    }
+
+    class WebSecurityConfig <<SpringBootConfiguration>> {
+        + authenticationJwtTokenFilter(): AuthTokenFilter
+        + authenticationProvider(): DaoAuthenticationProvider
+        + authenticationManager(authConfig: AuthenticationConfiguration): AuthenticationManager
+        + passwordEncoder(): PasswordEncoder
+        + corsConfigurationSource(): CorsConfigurationSource
+    }
+}
+
+package "com.travelweb.converter" {
+    class CategoryConverter {
+        + toEntity(dto: CategoryDTO): CategoryEntity
+        + toDTO(entity: CategoryEntity): CategoryDTO
+        + toEntity(dto: CategoryDTO, entity: CategoryEntity): CategoryEntity
+    }
+
+    class NewConverter {
+        + toEntity(dto: NewDTO): NewsEntity
+        + toDTO(entity: NewsEntity): NewDTO
+        + toEntity(dto: NewDTO, entity: NewsEntity): NewsEntity
+    }
+}
+
+package "com.travelweb.details" {
+    class UserDetailsImpl <<SpringBootEntity>> {
+        - id: Long
+        - username: String
+        - email: String
+        - password: String
+        - authorities: Collection<GrantedAuthority>
+        + build(user: UserEntity): UserDetailsImpl
+        + getId(): Long
+        + getUsername(): String
+        + getEmail(): String
+        + getPassword(): String
+        + getAuthorities(): Collection<GrantedAuthority>
+    }
+}
+
+
+package "com.travelweb.dto" {
+    class AbstractDTO<T> {
+        - id: Long
+        - createdBy: String
+        - createdDate: Date
+        - modifiedBy: String
+        - modifiedDate: Date
+        - listResult: List<T>
+    }
+
+    class CategoryDTO extends AbstractDTO {
+        - code: String
+        - name: String
+        - news: String
+    }
+
+    class NewDTO extends AbstractDTO {
+        - title: String
+        - shortDescription: String
+        - titleContent: String
+        - content: String
+        - categoryCode: String
+        - thumbnail: String
+    }
+
+    class UserDTO extends AbstractDTO {
+        - userName: String
+        - password: String
+        - fullName: String
+        - status: Integer
+        - email: String
+        - roleCode: String
+    }
+}
+
+package "com.travelweb.entity" {
+    class BaseEntity {
+        - id: Long
+        - createdBy: String
+        - createdDates: Date
+        - modifiedBy: String
+        - modifiedDates: Date
+    }
+
+    class CategoryEntity extends BaseEntity {
+        - code: String
+        - name: String
+        + news: List<NewsEntity>
+    }
+
+    class NewsEntity extends BaseEntity {
+        - title: String
+        - thumbnail: String
+        - shortDescription: String
+        - titleContent: String
+        - content: String
+        + category: CategoryEntity
+    }
+
+    class RoleEntity extends BaseEntity {
+        - name: ERole
+    }
+
+    class UserEntity extends BaseEntity {
+        - username: String
+        - email: String
+        - password: String
+        + roles: Set<RoleEntity>
+    }
+}
+
+package "com.travelweb.enumEntity" {
+    enum ERole {
+        ROLE_USER
+        ROLE_MODERATOR
+        ROLE_ADMIN
+    }
+}
+
+
+package "com.travelweb.filter" {
+    class AuthTokenFilter {
+        + doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain): void
+        - parseJwt(request: HttpServletRequest): String
+    }
+}
+
+package "com.travelweb.jwt" {
+    class JwtUtils {
+        - jwtSecret: String
+        - jwtExpirationMs: int
+        + generateJwtToken(authentication: Authentication): String
+        + getUserNameFromJwtToken(token: String): String
+        + validateJwtToken(authToken: String): boolean
+    }
+
+    class AuthEntryPointJwt {
+        + commence(request: HttpServletRequest, response: HttpServletResponse, authException: AuthenticationException): void
+    }
+}
+
+package "com.travelweb.payload.request" {
+    class LoginRequest {
+        - username: String
+        - password: String
+    }
+
+    class SignupRequest {
+        - username: String
+        - email: String
+        - role: Set<String>
+        - password: String
+    }
+}
+
+package "com.travelweb.payload.response" {
+    class JwtResponse {
+        - token: String
+        - type: String = "Bearer"
+        - id: Long
+        - username: String
+        - email: String
+        - roles: List<String>
+    }
+
+    class MessageResponse {
+        - message: String
+    }
+}
+
+package "com.travelweb.repository" {
+    interface CategoryRepository {
+        + findOneByCode(code: String): CategoryEntity
+    }
+
+    interface NewRepository {
+        + findByTitleContaining(keyword: String): List<NewsEntity>
+    }
+
+    interface RoleRepository {
+        + findByName(name: ERole): Optional<RoleEntity>
+    }
+}
+
+
+package "com.travelweb.repository" {
+    interface UserRepository {
+        + findByEmail(email: String): Optional<UserEntity>
+        + existsByUsername(username: String): Boolean
+        + existsByEmail(email: String): Boolean
+    }
+}
+
+package "com.travelweb.service" {
+    interface INewService {
+        + save(newDTO: NewDTO): NewDTO
+        + delete(ids: long[]): void
+        + findAll(pageable: Pageable): List<NewDTO>
+        + totalItem(): int
+        + getAllCategory(): List<CategoryEntity>
+        + searchByTitle(keyword: String): List<NewDTO>
+    }
+
+    interface IUserService {
+        + createUser(userDTO: UserDTO): UserDTO
+        + getUsers(): List<UserEntity>
+        + getUserById(userId: Long): UserEntity
+        + updateUser(userId: Long, userDTO: UserDTO): UserDTO
+        + existByUsername(username: String): Boolean
+        + existByEmail(email: String): Boolean
+    }
+
+    interface UserDetailsService {
+        + loadUserByUsername(username: String): UserDetails
+    }
+}
+
+package "com.travelweb.service.impl" {
+    class NewService implements INewService {
+        + save(newDTO: NewDTO): NewDTO
+        + delete(ids: long[]): void
+        + findAll(pageable: Pageable): List<NewDTO>
+        + totalItem(): int
+        + getAllCategory(): List<CategoryEntity>
+        + searchByTitle(keyword: String): List<NewDTO>
+    }
+
+    class CustomOAuth2UserService implements OAuth2UserService {
+        + loadUser(userRequest: OAuth2UserRequest): OAuth2User
+    }
+
+    class UserDetailsServiceImpl implements UserDetailsService {
+        + loadUserByUsername(email: String): UserDetails
+        + loadUserByOAuth2Authentication(authentication: OAuth2AuthenticationToken): UserDetails
+    }
+}
+
+@enduml

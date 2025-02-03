@@ -37,6 +37,9 @@ public class UserEntity extends BaseEntity {
 	@NotBlank
 	@Size(max = 120)
 	private String password;
+	
+	@Column(nullable = true)
+	private String avatar;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -82,6 +85,14 @@ public class UserEntity extends BaseEntity {
 
 	public void setRoles(Set<RoleEntity> roles) {
 		this.roles = roles;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	
 	

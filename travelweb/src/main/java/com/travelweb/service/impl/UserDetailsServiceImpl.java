@@ -32,18 +32,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	@Transactional
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserEntity user = userRepository.findByUsername(username)
-				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Optional<UserEntity> userOptional = userRepository.findByEmail(email);
+	    System.out.println("Kết quả truy vấn email '" + email + "': " + userOptional);
 
-		return UserDetailsImpl.build(user);
+	    UserEntity user = userOptional
+	            .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + email));
+
+	    return UserDetailsImpl.build(user);
 	}
 
 	@Transactional
     public UserDetails loadUserByOAuth2Authentication(OAuth2AuthenticationToken authentication) {
         OAuth2User oauth2User = authentication.getPrincipal();
         String email = (String) oauth2User.getAttributes().get("email");
-        Optional<UserEntity> userEntity = userRepository.findByUsername(email);
+        Optional<UserEntity> userEntity = userRepository.findByEmail(email);
 
         if (!userEntity.isPresent()) {
             // Tạo tài khoản mới nếu không tồn tại

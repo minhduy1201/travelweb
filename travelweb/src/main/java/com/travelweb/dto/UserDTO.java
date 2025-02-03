@@ -11,6 +11,7 @@ public class UserDTO extends AbstractDTO<UserDTO> {
 	private Integer status;
 	private String email;
 	private String roleCode;
+	private String avatar;
 	public String getUserName() {
 		return userName;
 	}
@@ -46,6 +47,12 @@ public class UserDTO extends AbstractDTO<UserDTO> {
 	}
 	public void setRoleCode(String roleCode) {
 		this.roleCode = roleCode;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	
 	

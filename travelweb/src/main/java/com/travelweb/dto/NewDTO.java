@@ -1,13 +1,33 @@
 package com.travelweb.dto;
 
+import java.util.List;
+
+import com.travelweb.entity.NewsEntity;
+
 public class NewDTO extends AbstractDTO<NewDTO> {
 	
 	private String title;
-	private String content;
 	private String shortDescription;
+	private String titleContent;
+	private String content;
 	private String categoryCode;
 	private String thumbnail;
+	private List<CommentDTO> comments;
 	
+	
+	
+	public NewDTO() {
+		super();
+	}
+
+	public NewDTO(NewsEntity post) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public NewDTO(String post) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -46,5 +66,21 @@ public class NewDTO extends AbstractDTO<NewDTO> {
 
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
+	}
+	
+	public String getTitleContent() {
+	    return titleContent;
+	}
+
+	public void setTitleContent(String titleContent) {
+	    this.titleContent = titleContent;
+	}
+
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
 	}
 }

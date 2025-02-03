@@ -1,0 +1,204 @@
+Folder PATH listing
+Volume serial number is 9EE7-06DC
+C:.
+|   .classpath
+|   .gitignore
+|   .project
+|   directory_structure.txt
+|   pom.xml
+|   
++---.settings
+|       org.eclipse.core.resources.prefs
+|       org.eclipse.jdt.apt.core.prefs
+|       org.eclipse.jdt.core.prefs
+|       org.eclipse.m2e.core.prefs
+|       
++---.vscode
+|       settings.json
+|       
++---src
+|   +---main
+|   |   +---java
+|   |   |   \---com
+|   |   |       \---travelweb
+|   |   |           |   Application.java
+|   |   |           |   
+|   |   |           +---api
+|   |   |           |   |   AuthController.java
+|   |   |           |   |   NewAPI.java
+|   |   |           |   |   TestController.java
+|   |   |           |   |   UserAPI.java
+|   |   |           |   |   
+|   |   |           |   +---input
+|   |   |           |   |       NewInput.java
+|   |   |           |   |       
+|   |   |           |   \---output
+|   |   |           |           NewOutput.java
+|   |   |           |           
+|   |   |           +---config
+|   |   |           |       JpaAuditingConfig.java
+|   |   |           |       WebSecurityConfig.java
+|   |   |           |       
+|   |   |           +---converter
+|   |   |           |       NewConverter.java
+|   |   |           |       UserConverter.java
+|   |   |           |       
+|   |   |           +---details
+|   |   |           |       CustomOAuth2User.java
+|   |   |           |       UserDetailsImpl.java
+|   |   |           |       
+|   |   |           +---dto
+|   |   |           |       AbstractDTO.java
+|   |   |           |       NewDTO.java
+|   |   |           |       UserDTO.java
+|   |   |           |       
+|   |   |           +---entity
+|   |   |           |       BaseEntity.java
+|   |   |           |       CategoryEntity.java
+|   |   |           |       NewsEntity.java
+|   |   |           |       RoleEntity.java
+|   |   |           |       UserEntity.java
+|   |   |           |       
+|   |   |           +---enumEntity
+|   |   |           |       ERole.java
+|   |   |           |       
+|   |   |           +---filter
+|   |   |           |       AuthTokenFilter.java
+|   |   |           |       
+|   |   |           +---jwt
+|   |   |           |       AuthEntryPointJwt.java
+|   |   |           |       JwtUtils.java
+|   |   |           |       
+|   |   |           +---payload
+|   |   |           |   +---request
+|   |   |           |   |       LoginRequest.java
+|   |   |           |   |       SignupRequest.java
+|   |   |           |   |       
+|   |   |           |   \---response
+|   |   |           |           JwtResponse.java
+|   |   |           |           MessageResponse.java
+|   |   |           |           
+|   |   |           +---repository
+|   |   |           |       CategoryRepository.java
+|   |   |           |       NewRepository.java
+|   |   |           |       RoleRepository.java
+|   |   |           |       UserRepository.java
+|   |   |           |       
+|   |   |           \---service
+|   |   |               |   INewService.java
+|   |   |               |   IUserService.java
+|   |   |               |   UserDetailsService.java
+|   |   |               |   
+|   |   |               \---impl
+|   |   |                       CustomOAuth2UserService.java
+|   |   |                       NewService.java
+|   |   |                       UserDetailsServiceImpl.java
+|   |   |                       
+|   |   \---resources
+|   |           application.properties
+|   |           
+|   \---test
+|       +---java
+|       \---resources
+\---target
+    |   travelweb-1.0.jar
+    |   
+    +---classes
+    |   |   application.properties
+    |   |   
+    |   +---com
+    |   |   \---travelweb
+    |   |       |   Application.class
+    |   |       |   
+    |   |       +---api
+    |   |       |   |   AuthController.class
+    |   |       |   |   NewAPI.class
+    |   |       |   |   TestController.class
+    |   |       |   |   
+    |   |       |   +---input
+    |   |       |   |       NewInput.class
+    |   |       |   |       
+    |   |       |   \---output
+    |   |       |           NewOutput.class
+    |   |       |           
+    |   |       +---config
+    |   |       |       WebSecurityConfig.class
+    |   |       |       
+    |   |       +---converter
+    |   |       |       NewConverter.class
+    |   |       |       UserConverter.class
+    |   |       |       
+    |   |       +---details
+    |   |       |       CustomOAuth2User.class
+    |   |       |       UserDetailsImpl.class
+    |   |       |       
+    |   |       +---dto
+    |   |       |       AbstractDTO.class
+    |   |       |       NewDTO.class
+    |   |       |       UserDTO.class
+    |   |       |       
+    |   |       +---entity
+    |   |       |       BaseEntity.class
+    |   |       |       CategoryEntity.class
+    |   |       |       NewsEntity.class
+    |   |       |       RoleEntity.class
+    |   |       |       UserEntity.class
+    |   |       |       
+    |   |       +---enumEntity
+    |   |       |       ERole.class
+    |   |       |       
+    |   |       +---filter
+    |   |       |       AuthTokenFilter.class
+    |   |       |       
+    |   |       +---jwt
+    |   |       |       AuthEntryPointJwt.class
+    |   |       |       JwtUtils.class
+    |   |       |       
+    |   |       +---payload
+    |   |       |   +---request
+    |   |       |   |       LoginRequest.class
+    |   |       |   |       SignupRequest.class
+    |   |       |   |       
+    |   |       |   \---response
+    |   |       |           JwtResponse.class
+    |   |       |           MessageResponse.class
+    |   |       |           
+    |   |       +---repository
+    |   |       |       CategoryRepository.class
+    |   |       |       NewRepository.class
+    |   |       |       RoleRepository.class
+    |   |       |       UserRepository.class
+    |   |       |       
+    |   |       \---service
+    |   |           |   INewService.class
+    |   |           |   IUserService.class
+    |   |           |   UserDetailsService.class
+    |   |           |   
+    |   |           \---impl
+    |   |                   CustomOAuth2UserService.class
+    |   |                   NewService.class
+    |   |                   UserDetailsServiceImpl.class
+    |   |                   
+    |   \---META-INF
+    |       |   MANIFEST.MF
+    |       |   
+    |       \---maven
+    |           \---com.travelweb
+    |               \---travelweb
+    |                       pom.properties
+    |                       pom.xml
+    |                       
+    +---maven-archiver
+    |       pom.properties
+    |       
+    +---maven-status
+    |   \---maven-compiler-plugin
+    |       +---compile
+    |       |   \---default-compile
+    |       |           inputFiles.lst
+    |       |           
+    |       \---testCompile
+    |           \---default-testCompile
+    |                   inputFiles.lst
+    |                   
+    \---test-classes

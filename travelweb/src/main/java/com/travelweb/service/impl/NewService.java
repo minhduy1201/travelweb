@@ -2,6 +2,8 @@ package com.travelweb.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.SecondaryTable;
 
@@ -9,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.travelweb.converter.CategoryConverter;
 import com.travelweb.converter.NewConverter;
+import com.travelweb.dto.CategoryDTO;
 import com.travelweb.dto.NewDTO;
 import com.travelweb.entity.CategoryEntity;
 import com.travelweb.entity.NewsEntity;
@@ -28,6 +32,7 @@ public class NewService implements INewService {
 	
 	@Autowired
 	private NewConverter newConverter;
+	
 
 	@Override
 	public NewDTO save(NewDTO newDTO) {
@@ -62,11 +67,51 @@ public class NewService implements INewService {
 		}
 		return result;
 	}
+	
+	
 
 	@Override
 	public int totalItem() {
 		return (int) newRepository.count();
 	}
+
+	@Override
+	public List<CategoryEntity> getAllCategory() {
+		List<CategoryEntity> entities = categoryRepository.findAll();
+		List<CategoryEntity> categoryEntities = new ArrayList<CategoryEntity>();
+		for (int i=0; i<entities.size();i++) {
+			Long id = entities.get(i).getId();
+			String code = entities.get(i).getCode();
+			String name = entities.get(i).getName();
+			CategoryEntity entity = new CategoryEntity();
+			entity.setCode(code);
+			entity.setName(name);
+			categoryEntities.add(entity);
+		}
+		return categoryEntities;
+	}
+	
+	@Override
+    public List<NewDTO> searchByTitle(String keyword) {
+		List<NewDTO> result = new ArrayList<NewDTO>();
+        List<NewsEntity> entities = newRepository.findByTitleContaining(keyword);
+        for (NewsEntity item : entities) {
+			NewDTO newDTO = newConverter.toDTO(item);
+			result.add(newDTO);
+		}
+        return result;
+    }
+
+//	@Override
+//	public NewDTO findById(long id) {
+//		Optional<NewsEntity> postOpt = newRepository.findById(id);
+//	    
+//
+//	    NewsEntity post = postOpt.get();
+//	    NewDTO result = newConverter.toDTO(post);
+//	    
+//		return result;
+//	}
 	
 	
 

@@ -41,7 +41,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	    String name = (String) attributes.get("name"); // Tên người dùng (nếu cần)
 
 	    // Kiểm tra xem tài khoản đã tồn tại hay chưa
-	    Optional<UserEntity> optionalUser = userRepository.findByUsername(email);
+	    Optional<UserEntity> optionalUser = userRepository.findByEmail(email);
 
 	    UserEntity user;
 	    if (optionalUser.isPresent()) {
