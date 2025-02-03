@@ -38,7 +38,7 @@ public class NewsEntity extends BaseEntity {
 	private CategoryEntity category;
 
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonManagedReference // Giúp điều hướng vòng lặp JSON
+	@JsonManagedReference 
 	private List<CommentEntity> comments;
 
 	public String getTitle() {

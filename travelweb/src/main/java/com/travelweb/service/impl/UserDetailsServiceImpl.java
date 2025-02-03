@@ -37,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	    System.out.println("Kết quả truy vấn email '" + email + "': " + userOptional);
 
 	    UserEntity user = userOptional
-	            .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + email));
+	            .orElseThrow(() -> new UsernameNotFoundException("không tìm được user với username: " + email));
 
 	    return UserDetailsImpl.build(user);
 	}
@@ -57,7 +57,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
             // Gán vai trò mặc định cho người dùng mới
             RoleEntity userRole = roleRepository.findByName(ERole.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                    .orElseThrow(() -> new RuntimeException("Error: không tìm thấy Role."));
             newUser.setRoles(Set.of(userRole));
             
             userEntity = Optional.of(userRepository.save(newUser));

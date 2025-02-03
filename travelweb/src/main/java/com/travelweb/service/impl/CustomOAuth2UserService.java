@@ -56,7 +56,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
 	        // Gán vai trò mặc định
 	        RoleEntity role = roleRepository.findByName(ERole.ROLE_USER)
-	                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+	                .orElseThrow(() -> new RuntimeException("Error: Không tìm thấy Role"));
 	        user.setRoles(Set.of(role));
 
 	        // Lưu tài khoản vào cơ sở dữ liệu

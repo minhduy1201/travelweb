@@ -49,7 +49,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 System.out.println("Token không hợp lệ hoặc không tìm thấy.");
             }
 		} catch (Exception e) {
-			logger.error("Cannot set user authentication: {}", e);
+			logger.error("Không thể thiết lập user authentication: {}", e);
 		}
 
 		filterChain.doFilter(request, response);

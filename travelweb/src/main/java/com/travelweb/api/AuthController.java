@@ -109,11 +109,11 @@ public class AuthController {
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username đã được dùng!"));
 		}
 
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email đã được dùng!"));
 		}
 
 		// Create new user's account
@@ -125,26 +125,26 @@ public class AuthController {
 
 		if (strRoles == null) {
 			RoleEntity userRole = roleRepository.findByName(ERole.ROLE_USER)
-					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					.orElseThrow(() -> new RuntimeException("Error: không tìm thấy Role."));
 			roles.add(userRole);
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
 				case "admin":
 					RoleEntity adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RuntimeException("Error: không tìm thấy Role Role."));
 					roles.add(adminRole);
 
 					break;
 				case "mod":
 					RoleEntity modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RuntimeException("Error: không tìm thấy Role Role."));
 					roles.add(modRole);
 
 					break;
 				default:
 					RoleEntity userRole = roleRepository.findByName(ERole.ROLE_USER)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+							.orElseThrow(() -> new RuntimeException("Error: không tìm thấy Role Role."));
 					roles.add(userRole);
 				}
 			});
@@ -153,7 +153,7 @@ public class AuthController {
 		user.setRoles(roles);
 		userRepository.save(user);
 
-		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+		return ResponseEntity.ok(new MessageResponse("Đăng kí thành công!"));
 	}
 	
 	@PostMapping("/logout")

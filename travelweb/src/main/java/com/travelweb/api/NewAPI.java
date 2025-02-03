@@ -221,7 +221,7 @@ public class NewAPI {
             CommentDTO dto = new CommentDTO();
             dto.setContent(comment.getContent());
             dto.setRating(comment.getRating());
-            dto.setUsername(comment.getUser().getUsername()); // Lấy tên người dùng từ UserEntity
+            dto.setUsername(comment.getUser().getUsername());
             return dto;
         }).collect(Collectors.toList());
 
